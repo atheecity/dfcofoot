@@ -1,0 +1,26 @@
+<div id="slide">
+    {% for i in 0..3 %}
+    	<div id="frag{{ i+1 }}" class="ui-tabs-panel 
+    	{% if i != 0 %}
+    	ui-tabs-hide
+    	{% endif %}
+    	">
+    		<img src="{{ breves[i].illustration }}" alt="" width="620px" height="350px"/>
+		<div class="info" >
+			<div class="txt">
+				<p>
+					<span class="entete">Brève</span><br>
+					<span class="title">{{ breves[i].title }}</span>
+				</p>
+			</div>
+			
+		</div>
+    </div>
+    {% endfor %}
+    <div id="frag">
+		<span class="chx" id="1">•</span>
+		<span class="chx" id="2">•</span>
+		<span class="chx" id="3">•</span>
+		<span class="chx" id="4">•</span>
+	</div>
+</div>

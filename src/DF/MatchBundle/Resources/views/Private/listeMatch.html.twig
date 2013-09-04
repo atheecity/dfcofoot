@@ -1,0 +1,36 @@
+{% extends 'DFAdminBundle::layout.html.twig' %}
+
+{% block titleContent %}Liste des matchs{% endblock %}
+
+{% block body %}
+<div class="bloc">
+	<div class="title">Liste des matchs</div>
+	<div class="content">
+		<table>
+			<thead>
+				<tr>
+					<th>Journée</th>
+					<th>Equipe domicile</th>
+					<th>Equipe extérieur</th>
+					<th>Date</th>	
+					<th>Opérations</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for match in matchs %}
+				<tr>
+					<td>{{ match.calendrier.libelle }}</td>
+					<td>{{ match.equipeDom.nom }}</td>
+					<td>{{ match.equipeExt.nom }}</td>
+					<td>{{ match.date|date('d/m/Y \\-\\ H:i') }}</td>
+					<td><a href="{{ path('DFMatchBundle_updateMatch', {
+						'id_competition' : match.calendrier.competition.id, 
+						'id_match' : match.id }) }}">Modifier</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

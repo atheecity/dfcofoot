@@ -1,0 +1,117 @@
+#calendrier-club {
+	width: 802px;
+}
+
+#calendrier-club table tr th {
+	display: none;
+}
+
+#calendrier-club table tr td.equipe {
+	line-height: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#calendrier-club table tr td.equipe img {
+	vertical-align: top;
+}
+
+#calendrier-club table tr td {
+	font-size: 12px;
+}
+
+/**DERNIER MATCH**/
+#dernier-match {
+	width: 410px;	
+	margin-top: 25px;
+	display: inline-block;
+}
+
+#content-dernier-match .club-last-result {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+}
+
+#content-dernier-match #score {
+	width: 100px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content-dernier-match #score p {
+	padding-top: 40px;
+	font-size: 35px;
+	text-align: center;
+}
+
+#title-ribbons-dernier-match h1 {
+	width: 200px;
+}
+
+#title-ribbons-dernier-match {
+	height: 299px;
+}
+
+/**CLASSEMENT**/
+#classement {
+	width: 340px;
+	margin-left: 25px;
+	margin-top: 25px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#classement #title-ribbons-classement h1 {
+	width: 140px;
+}
+
+#classement table#tab-classement th {
+	color: #444; 
+	font-size: 11px;
+	border: none;
+}
+
+#classement table#tab-classement td {
+	text-align: center;
+	padding: 5px;
+}
+
+#classement table#tab-classement td.left {
+	text-align: left;
+}
+
+#classement table#tab-classement td.left img {
+	float: left;
+	padding-top: 2px;
+}
+
+#classement table#tab-classement td.left span {
+	padding-left: 5px;
+}
+
+#classement #classement-complet {
+	text-align: right;
+	margin-right: 10px;
+	padding-bottom: 5px;
+}
+
+#classement #classement-complet a {
+	text-decoration: none;
+	color: #700114;
+	font-weight: bold;
+}
+
+#classement table#tab-classement {
+	width: 100%;
+	font-size: 12px;
+	color: #444;
+}
+
+#classement #title-ribbons-classement .center {
+	text-align: center;
+	line-height: 140px;
+	color: rgb(173, 173, 173);
+}

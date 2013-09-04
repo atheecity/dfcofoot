@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{{ asset('bundles/dfhome/css/home.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('bundles/dfhome/css/menu.css') }}" rel="stylesheet" media="screen" />
+        <link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
+        {% block stylesheets %}
+        {% endblock %}
+  		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js" ></script>
+    </head>
+    <body>
+    	<div id="header">
+    		<div id="content">
+    			<nav id="header-menu">
+    				<ul class="fancyNav">
+    					<li>
+    						<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+    						<a href="{{ path('DFHomeBundle_home') }}">Accueil</a>
+    					</li>
+    					<li>
+    						<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+    						<a href="{{ path('DFBreveBundle_listeBreve') }}">Actus</a>
+    					</li>
+    					<li>
+    						Saison 13/14
+    						<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+    					</li>
+    					<li>
+	    					<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+	    					Le club
+    					</li>
+    					<li>
+	    					<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+	    					Supporters
+    					</li>
+    					<li>
+	    					<img src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+	    					<a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
+	    					<img id="last" src="{{ asset('bundles/dfhome/images/border-top.png') }}" />
+    					</li>
+    				</ul>
+    			</nav>
+    			<div id="sous-menu">
+    			</div>
+    			<img id="chouette" src="{{ asset('bundles/dfhome/images/chouette2.png') }}" alt="" />
+    			<img id="chouette-name" src="{{ asset('bundles/dfhome/images/name3.png') }}" alt="" />
+    			<span id="txt-chouette">Toute l'actualité du Dijon Football Côte-d'Or</span>
+    			<ul id="connect">
+    			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    				<li class="border-right">Connecté en tant que {{ app.user.username }}</li>
+    				<li><a href="{{ path('fos_user_security_logout') }}">DECONNEXION</a></li>
+				{% else %}
+					<li class="border-right"><a href="{{ path('fos_user_registration_register') }}">INSCRIPTION</a></li>
+					<li><a href="{{ path('fos_user_security_login') }}">CONNEXION</a></li>
+				{% endif %}
+				</ul>
+    		</div>
+    	</div>
+    	<div id="content-body">
+    		<div id="content-padding">
+    		{% block contentBody %}
+				
+			{% endblock %}
+	    	</div>
+    	</div>
+        {% block body %}{% endblock %}
+        <footer id="home-footer">
+        	<div id="content">
+        		<ul class="menu">
+        			<li class="title">Extras</li>
+        			<li></li>
+        			<li></li>
+        			<li></li>
+        		</ul>
+        		<ul class="menu">
+        			<li class="title">Aide & Contact</li>
+        			<li></li>
+        			<li></li>
+        			<li></li>
+        		</ul>
+        		<ul class="menu">
+        			<li class="title">Légal</li>
+        			<li></li>
+        			<li></li>
+        			<li></li>
+        		</ul>
+        		<ul class="menu">
+        			<li class="title">Nous suivre</li>
+        			<li></li>
+        			<li></li>
+        			<li></li>
+        		</ul>
+        	</div>
+        </footer>
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    </body>
+</html>

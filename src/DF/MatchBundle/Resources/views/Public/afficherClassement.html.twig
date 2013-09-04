@@ -1,0 +1,44 @@
+{% extends 'DFHomeBundle:Public:affichage-classique.html.twig' %}
+
+{% block zoneLeft %}
+	<div id="classement-club">
+		<table class="styl">
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Equipe</th>
+					<th>Pts</th>
+					<th>J</th>
+					<th>G</th>
+					<th>N</th>
+					<th>P</th>
+					<th>Bp</th>
+					<th>Bc</th>
+					<th>Diff</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% set i = 1 %}
+			{% for position in classement %}
+				<tr>
+					<td>{{ i }}</td>
+					<td>{{ position.club.nom }}</td>
+					<td>{{ position.points }}</td>
+					<td>{{ position.journee }}</td>
+					<td>{{ position.victoire }}</td>
+					<td>{{ position.nul }}</td>
+					<td>{{ position.defaite }}</td>
+					<td>{{ position.butPour }}</td>
+					<td>{{ position.butContre }}</td>
+					<td>{{ position.diff }}</td>
+				</tr>
+				{% set i = i + 1 %}
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+{% block zoneRight %}
+	{{ render(controller('DFBreveBundle:Public:moduleListeBreve')) }}
+{% endblock %}

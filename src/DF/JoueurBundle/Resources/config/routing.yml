@@ -1,0 +1,5 @@
+DFJoueurBundle_newEffectif:
+    pattern:  /admin/joueurs/new-effectif/{id_club}/
+    defaults: { _controller: DFJoueurBundle:Private:newEffectif }
+    requirements:
+        id_club: \d+

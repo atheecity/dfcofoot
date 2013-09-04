@@ -1,0 +1,36 @@
+{% extends 'DFHomeBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+	<link href="{{ asset('bundles/dfmatch/css/match.css') }}" rel="stylesheet" media="screen" />
+{% endblock %}
+
+{% block contentBody %}
+	<div id="calendrier-club">
+		<table class="styl">
+			<thead>
+				<tr>
+					<th>Compétition</th>
+					<th>Date</th>
+					<th>Domicile</th>
+					<th>Résultats</th>
+					<th>Extérieur</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for match in matchs %}
+				<tr>
+					<td class="text-center">{{ match.calendrier.competition.libelle }} - {{ match.calendrier.libelle }}</td>
+					<td class="text-center">{{ match.date|date("d/m/y \\à\\ H:i") }}</td>
+					<td class="text-right equipe">
+						{{ match.equipeDom.nom }} <img alt="" src="{{ match.equipeDom.logo }}" width="20px" />
+					</td>
+					<td>{{ match.scoreDom }} - {{ match.scoreExt }}</td>
+					<td class="equipe text-left">
+						<img alt="" src="{{ match.equipeExt.logo }}" width="20px" />{{ match.equipeExt.nom }} 
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

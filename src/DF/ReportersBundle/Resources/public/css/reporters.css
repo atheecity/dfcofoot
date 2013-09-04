@@ -1,0 +1,13 @@
+#reporters {
+	margin-top: 15px;
+}
+
+#reporters #title-ribbons-reporters {
+	height: 250px;
+}
+
+#reporters #title-ribbons-reporters .center {
+	line-height: 140px;
+	color: rgb(173, 173, 173);
+	text-align: center;
+}

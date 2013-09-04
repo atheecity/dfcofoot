@@ -1,0 +1,25 @@
+{% extends 'DFHomeBundle::layout.html.twig' %}
+
+{% block contentBody %}
+	{% javascripts '@DFHomeBundle/Resources/public/js/home.js' %}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	
+	{{ render(controller('DFHomeBundle:Public:slide')) }}
+	<div id="left-top">	
+		{{ render(controller('DFBreveBundle:Public:moduleListeBreve')) }}
+		<div id="pub-carre">
+			Publicité
+		</div>
+		{{ render(controller('DFReportersBundle:Public:reporters')) }}
+	</div>
+	<div id="center">
+		{{ render(controller('DFMatchBundle:Public:selectModuleMatch')) }}
+		{{ render(controller('DFMatchBundle:Public:moduleClassement')) }}
+	</div>
+	<div id="suivre" style=" width: 782px; height: 330px; margin-top: 25px; ">
+		<div class="title-ribbons"> <h1>NOUS SUIVRE <span class="arrow"></span> </h1>
+				
+		</div>
+	</div>
+{% endblock %}
