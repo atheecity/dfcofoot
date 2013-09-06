@@ -15,6 +15,7 @@
 			<thead>
 				<tr>
 					<th>Publié</th>
+					<th>Slide Accueil</th>
 					<th>Titre</th>
 					<th>Date Création</th>
 					<th>Date publication</th>
@@ -26,9 +27,20 @@
 				{% for breve in breves %}
 				<tr>
 					<td>
-						<div class="checker">
+						<div class="checker isPublish">
 							<span 
 							{% if breve.isPublish == 1 %}
+								class="checked"
+							{% endif %}
+							>
+								<input type="checkbox" id="{{ breve.id }}">
+							</span>
+						</div>
+					</td>
+					<td>
+						<div class="checker isPublishSlide">
+							<span 
+							{% if breve.isPublishSlide == 1 %}
 								class="checked"
 							{% endif %}
 							>

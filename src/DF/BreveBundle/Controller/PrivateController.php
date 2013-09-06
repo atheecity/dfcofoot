@@ -75,6 +75,25 @@ class PrivateController extends Controller
 		return new Response($reponse);
 	}
 	
+	public function updatePublishSlideAction($breve_id, $isPublish)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$breve = $em->getRepository('DFBreveBundle:Breve')->find($breve_id);
+		
+		if ($breve) {
+			$breve->setIsPublishSlide($isPublish);
+				
+			$em->persist($breve);
+			$em->flush();
+				
+			$reponse = 'true';
+		}
+		else
+			$reponse = 'false';
+		
+		return new Response($reponse);
+	}
+	
 	/**
 	 * Supprime une breve
 	 * @param integer $id_breve Identifant breve

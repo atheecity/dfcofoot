@@ -26,6 +26,14 @@ DFBreveBundle_updatePublish:
     options: 
         expose: true
         
+DFBreveBundle_updatePublishSlide:
+    pattern: /admin/breves/update-publish-slide/{breve_id}/{isPublish}/
+    defaults: { _controller: DFBreveBundle:Private:updatePublishSlide }
+    requirements:
+        id_breve: \d+
+    options: 
+        expose: true
+        
         
         
 DFBreveBundle_module_listeBreve:
