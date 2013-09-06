@@ -3,6 +3,8 @@
     	<div id="frag{{ i+1 }}" class="ui-tabs-panel 
     	{% if i != 0 %}
     	ui-tabs-hide
+    	{% elseif i == 0 %}
+    	select
     	{% endif %}
     	">
     		<img src="{{ breves[i].illustration }}" alt="" width="620px" height="350px"/>
