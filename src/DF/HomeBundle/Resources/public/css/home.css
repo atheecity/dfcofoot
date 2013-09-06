@@ -181,38 +181,76 @@ body {
 	text-align: center;
 }
 
-#header-menu {
-	display: inline-block;
-	margin-left: 300px;
+/** MENU **/
+header #menu {
 	height: 70px;
+	width: 980px;
 	position: absolute;
+	margin-left: 300px;
 }
 
-#header-menu ul {
-	padding: 0;
+header ul#fancyNav {
+	list-style: none;
 	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 70px;
+	width: 980px;
 }
 
-#header-menu ul li {
+header ul#fancyNav li {
+	float: left;
+	display: block;
+	position: relative;
 	text-align: center;
 	line-height: 70px;
 	font-size: 17px;
 	font-weight: bold;
 	color: #fff;
 	width: 163px;
-	display: inline-block;
 	height: 70px;
+	z-index: 1000;
 }
 
-#sous-menu {
-	height: 150px;
+header #saison {
+	margin-left: -326px;
+}
+
+header li img {
+	float: left;
+}
+
+header li img#last {
+	float: right;
+}
+
+header .tab-content {
+	background-color: #cc052e;
 	width: 980px;
-	position: absolute;
-	margin-left: 300px;
-	margin-top: 70px;
-	background: #fff;
-	z-index: 77;
+	height: auto;
+	float: left;
+	border-top: 5px solid #fff;
 	display: none;
+}
+
+header #saison .content {
+	padding: 10px;
+}
+
+header .module {
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+header .elem {
+	line-height: 30px;
+	font-weight: normal;
+}
+
+header h3.titre {
+	font-size: 18px;
+	margin: 0;
 }
 
 /** Table **/

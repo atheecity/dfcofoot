@@ -1,20 +1,4 @@
-.fancyNav{
-	/* Affects the UL element */
-	overflow: hidden;
-	display: inline-block;
-}
-
-.fancyNav li{
-	position:relative;
-	float: left;
-	list-style: none;
-}
-
-.fancyNav li img {
-	float: left;
-}
-
-.fancyNav li:after{
+#fancyNav li:after{
 
 	/* This creates a pseudo element inslide each LI */	
 	
@@ -47,33 +31,27 @@
 	transition:0.25s all;
 }
 
-/* Treating the last LI and li:after elements separately */
-
-.fancyNav li img#last{
-	float: right;
-}
-
-.fancyNav li:hover:after,
-.fancyNav li.selected:after,
-.fancyNav li:target:after{
+#fancyNav li:hover:after,
+#fancyNav li.selected:after,
+#fancyNav li:target:after{
 	/* This property triggers the CSS3 transition */
 	opacity:1;
 }
 
-.fancyNav:hover li.selected:after,
-.fancyNav:hover li:target:after{
+#fancyNav:hover li.selected:after,
+#fancyNav:hover li:target:after{
 	/* Hides the targeted li when we are hovering on the UL */
 	opacity:0;
 }
 
-.fancyNav li.selected:hover:after,
-.fancyNav li:target:hover:after{
+#fancyNav li.selected:hover:after,
+#fancyNav li:target:hover:after{
 	opacity:1 !important;
 }
 
 /* Styling the anchor elements */
 
-.fancyNav li a{
+#fancyNav li a{
 	color: #fff;
 	display: inline-block;
 	position: relative;
@@ -83,7 +61,7 @@
 	white-space:nowrap;
 }
 
-.fancyNav a.homeIcon{
+fancyNav a.homeIcon{
 	background:url('../img/home.png') no-repeat center center;
 	display: block;
 	overflow: hidden;

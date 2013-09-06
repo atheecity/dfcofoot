@@ -9,12 +9,22 @@ function changFrag()
 	
 }
 
-function autoChangFrag()
+function sousMenu()
 {
-	$('#slide').ready(function() {
-		alert('ok');
+	$('li.select-tab').hover(function() {
+		$(this).children('.tab-content').show();	
+	}, function() {
+		$(this).children('.tab-content').hide();
 	});
 }
 
+function autoChangFrag()
+{
+	$('#slide').ready(function() {
+		
+	});
+}
+
+$(sousMenu);
 $(autoChangFrag);
 $(changFrag);
