@@ -187,6 +187,15 @@ h1 {
 	display:none; 
 }
 
+#slide .txt .title a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#slide #frag span {
+	cursor: pointer;
+}
+
 .text-right {
 	text-align: right;
 }
@@ -228,6 +237,10 @@ header ul#fancyNav li {
 	width: 163px;
 	height: 70px;
 	z-index: 1000;
+}
+
+header ul#fancyNav li a {
+	width: 157px;
 }
 
 header #saison {

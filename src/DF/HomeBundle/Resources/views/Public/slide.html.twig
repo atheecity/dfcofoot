@@ -11,11 +11,10 @@
 		<div class="info" >
 			<div class="txt">
 				<p>
-					<span class="entete">Brève</span><br>
-					<span class="title">{{ breves[i].title }}</span>
+					<span class="entete">{{ breves[i].categorie.libelle }}</span><br>
+					<span class="title"><a href="{{ path('DFBreveBundle_afficherBreve', { id_breve: breves[i].id }) }}">{{ breves[i].title }}</a></span>
 				</p>
 			</div>
-			
 		</div>
     </div>
     {% endfor %}

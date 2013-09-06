@@ -9,7 +9,7 @@
 				<img src="{{ breve.illustration }}" alt="" width="150px" height="100px"/>
 			</td>
 			<td class="article-right">
-				<a href="" >{{ breve.title }}</a>
+				<a href="{{ path('DFBreveBundle_afficherBreve', {id_breve : breve.id }) }}" >{{ breve.title }}</a>
 				<span class="cat-date">{{ breve.categorie.libelle }} - {{ breve.datePublication|date('d/m/Y \\à\\ h:i') }}</span>
 				<p>{{ breve.content|slice(0, 200)|striptags|raw }}...</p>
 			</td>

@@ -8,15 +8,20 @@
 		<div id="pub-carre">
 			Publicité
 		</div>
-		{{ render(controller('DFReportersBundle:Public:reporters')) }}
+		<div id="suivre" style=" width: 410px; height: 330px; margin-top: 25px; ">
+		<div class="title-ribbons" style="height:250px"> <h1>NOUS SUIVRE <span class="arrow"></span> </h1>
+				
+		</div>
+	</div>
 	</div>
 	<div id="center">
 		{{ render(controller('DFMatchBundle:Public:selectModuleMatch')) }}
 		{{ render(controller('DFMatchBundle:Public:moduleClassement')) }}
 	</div>
-	<div id="suivre" style=" width: 782px; height: 330px; margin-top: 25px; ">
-		<div class="title-ribbons"> <h1>NOUS SUIVRE <span class="arrow"></span> </h1>
+	<div style="width:340px;margin-top:25px;display: inline-block; vertical-align:top">
+		<div class="title-ribbons" style="height:250px"> <h1>SONDAGE <span class="arrow"></span> </h1>
 				
 		</div>
 	</div>
+	{{ render(controller('DFReportersBundle:Public:reporters')) }}
 {% endblock %}
