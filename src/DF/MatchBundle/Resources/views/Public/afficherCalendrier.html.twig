@@ -1,19 +1,23 @@
-{% extends 'DFHomeBundle::layout.html.twig' %}
+{% extends 'DFHomeBundle:Public:affichage-classique.html.twig' %}
 
-{% block stylesheets %}
-	<link href="{{ asset('bundles/dfmatch/css/match.css') }}" rel="stylesheet" media="screen" />
-{% endblock %}
-
-{% block contentBody %}
+{% block zoneLeft %}
+	<h1>Calendrier/Résultats</h1>
+	<div class="h1-entete">
+		Ligue 1
+	</div>
+	<!-- CSS -->
+	{% stylesheets '@DFMatchBundle/Resources/public/css/match.css' %}
+	<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 	<div id="calendrier-club">
 		<table class="styl">
 			<thead>
 				<tr>
-					<th>Compétition</th>
+					<th>Journée</th>
 					<th>Date</th>
-					<th>Domicile</th>
-					<th>Résultats</th>
-					<th>Extérieur</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,4 +37,8 @@
 			</tbody>
 		</table>
 	</div>
+{% endblock %}
+
+{% block zoneRight %}
+	{{ render(controller('DFBreveBundle:Public:moduleListeBreve')) }}
 {% endblock %}

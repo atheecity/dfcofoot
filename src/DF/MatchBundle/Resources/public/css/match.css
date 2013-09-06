@@ -2,10 +2,6 @@
 	width: 802px;
 }
 
-#calendrier-club table tr th {
-	display: none;
-}
-
 #calendrier-club table tr td.equipe {
 	line-height: 20px;
 	padding-right: 10px;
@@ -16,6 +12,12 @@
 
 #calendrier-club table tr td.equipe img {
 	vertical-align: top;
+}
+
+#calendrier-club thead tr {
+	border-bottom: 2px solid #444;
+	line-height: 40px;
+	color: #444;
 }
 
 #calendrier-club table tr td {
@@ -114,4 +116,31 @@
 	text-align: center;
 	line-height: 140px;
 	color: rgb(173, 173, 173);
+}
+
+#classement-club .nom-club {
+	line-height: 28px;
+}
+
+#classement-club img {
+	float: left;
+	width: 30px;
+}
+
+#classement-club tbody tr td {
+	padding: 5px 0;
+}
+
+#classement-club tbody tr {
+	border-spacing: 0;
+}
+
+#classement-club .center {
+	text-align: center;
+}
+
+#classement-club thead tr {
+	border-bottom: 2px solid #444;
+	line-height: 40px;
+	color: #444;
 }

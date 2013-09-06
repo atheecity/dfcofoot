@@ -15,7 +15,8 @@ class PublicController extends Controller
     {
     	$rep_breve = $this->getDoctrine()->getRepository('DFBreveBundle:Breve');
     	$breves = $rep_breve->findBy(
-    		array('isPublishSlide' => '1')	
+    		array('isPublishSlide' => '1'), 
+    		array('datePublication' => 'DESC')	
     	);
     	
     	return $this->render('DFHomeBundle:Public:slide.html.twig', array(

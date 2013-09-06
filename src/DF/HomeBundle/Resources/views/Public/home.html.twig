@@ -1,10 +1,7 @@
 {% extends 'DFHomeBundle::layout.html.twig' %}
 
 {% block contentBody %}
-	{% javascripts '@DFHomeBundle/Resources/public/js/home.js' %}
-	<script type="text/javascript" src="{{ asset_url }}"></script>
-	{% endjavascripts %}
-	
+
 	{{ render(controller('DFHomeBundle:Public:slide')) }}
 	<div id="left-top">	
 		{{ render(controller('DFBreveBundle:Public:moduleListeBreve')) }}

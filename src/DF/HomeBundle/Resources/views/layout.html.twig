@@ -30,10 +30,10 @@
     							<div id="saison" class="tab-content">
     								<div class="content">
 	    								<div class="module">
-	    									<h3 class="titre">Ligue 1</h3>
-	    									<div class="elem">Calendrier</div>
-	    									<div class="elem">Résultats</div>
-	    									<div class="elem">Classement</div>
+	    									<h3 class="titre">Ligue 2</h3>
+	    									<div class="elem"><a href="{{ path('DFMatchBundle_afficherCalendrier') }}">Calendrier</a></div>
+	    									<div class="elem"><a href="{{ path('DFMatchBundle_afficherCalendrier') }}">Résultats</a></div>
+	    									<div class="elem"><a href="{{ path('DFMatchBundle_afficherClassement') }}">Classement</a></div>
 	    								</div>
 	    								<div class="module">
 	    									<h3 class="titre">Coupe de France</h3>
@@ -117,5 +117,6 @@
         {% block javascripts %}{% endblock %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 		<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/dfhome/js/home.js') }}"></script>
     </body>
 </html>

@@ -5,6 +5,24 @@ body {
 	background-color: #f2f2f2;
 }
 
+
+h1 {
+	font-family: 'Nunito', sans-serif;
+	font-size: 35px;
+	color: rgb(68, 55, 55);
+	margin: 0;
+}
+
+.h1-entete {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	color: #777;
+	margin-bottom: 20px;
+	background: rgb(241, 241, 241);
+	margin-top: 10px;
+	padding: 5px 5px;
+}
+
 #header {
 	width: 100%;
 	margin: 0;
@@ -27,7 +45,7 @@ body {
 	width: 1280px;
 	margin: 0 auto;
 	padding: 0;
-	padding-top: 160px;
+	padding-top: 190px;
 	box-shadow: 0 0 10px 1px #929292;
 	background-color: #fff;
 }
@@ -257,27 +275,22 @@ header h3.titre {
 #content-body table.styl{
 	width: 100%;
 	text-align: left;
+	border-collapse: collapse;
 }
 #content-body table.styl .picture img{
-	border: 4px solid #DFDFDF;
 	margin: 7px;
 	padding: 0px;
-}
-#content-body table.styl .picture a:hover img{
-	border-color: #BDBDBD;
 }
 #content-body table.styl h1, #content-body table.styl h2, #content-body table.styl h3, #content-body table.styl h4, #content-body table.styl h5{
 	display: inline;
 }
 #content-body table.styl thead th{
-	border-bottom: 1px solid #BDBDBD;
 }
 #content-body table.styl thead tr th{
 	text-align:center;
 	font-weight: bold;
 	color: #151515;
 	font-size: 1.1em;
-	padding-bottom: 2px;
 }
 #content-body table.styl thead tr th a{
 	color: #151515;
@@ -286,15 +299,12 @@ header h3.titre {
 	height: 30px;
 	vertical-align: middle;
 	border-bottom: 1px solid #DADADA;
-	border-top: 1px solid #FFFFFF;
 }
 #content-body table.styl tbody tr:nth-child(2n+1) td{
 	background-color: #F0F0F0;
 }
 #content-body table.styl tbody tr:hover td{
 	background-color: #EAEAEA;
-	border-bottom: 1px solid #CACACA;
-	border-top: 1px solid #E2E2E2;
 }
 #content-body table.styl tbody tr td.actions{
 	text-align: right;
@@ -303,7 +313,6 @@ header h3.titre {
 }
 #content-body table.noalt tbody tr td{
 	background-color: transparent !important;
-	border-bottom: 1px solid #DADBDD;
 }
 #content-body table.noborder tbody tr td{
 	border: none;
