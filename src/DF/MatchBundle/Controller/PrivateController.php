@@ -9,6 +9,8 @@ use DF\MatchBundle\Entity\Calendrier;
 use Symfony\Component\BrowserKit\Response;
 use DF\MatchBundle\Entity\Matchs;
 use DF\MatchBundle\Form\MatchsType;
+use DF\MatchBundle\Entity\FeuilleMatch;
+use DF\MatchBundle\Form\FeuilleMatchType;
 
 class PrivateController extends Controller
 {
@@ -75,6 +77,35 @@ class PrivateController extends Controller
 		
 		return $this->render('DFMatchBundle:Private:listeMatch.html.twig', array(
 			'matchs' => $matchs
+		));
+	}
+	
+	public function newFeuilleMatchAction($competition_id, $match_id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$match = $em->getRepository('DFMatchBundle:Matchs')->find($match_id);
+		
+		$feuilleMatch = new FeuilleMatch();
+		$feuilleMatch->setMatch($match);
+		
+		$form = $this->createForm(new FeuilleMatchType(), $feuilleMatch, array('match' => $match));
+		
+		$request = $this->get('request');
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
+				
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($feuilleMatch);
+				$em->flush();
+			}
+				
+			return $this->redirect($this->generateUrl('DFMatchBundle_competition', array('id_competition' => $competition_id)));
+		}
+		
+		return $this->render('DFAdminBundle:Private:form.html.twig', array(
+				'form' => $form->createView(),
+				'title' => 'Feuille de match / '.$match->getEquipeDom()->getNom().' - '.$match->getEquipeExt()->getNom()
 		));
 	}
 	

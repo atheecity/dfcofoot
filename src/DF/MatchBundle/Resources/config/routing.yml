@@ -22,6 +22,10 @@ DFMatchBundle_updateClassementLigue2:
     pattern: /admin/update-classement-ligue2/
     defaults: { _controller: DFMatchBundle:Private:updateClassementLigue2 }
     
+DFMatchBundle_newFeuilleMatch:
+    pattern: /admin/matchs/competition/{competition_id}/match/{match_id}/feuille/
+    defaults: { _controller: DFMatchBundle:Private:newFeuilleMatch }
+    
     
     
 DFMatchBundle_afficherCalendrier:

@@ -12,7 +12,8 @@
 					<th>Journée</th>
 					<th>Equipe domicile</th>
 					<th>Equipe extérieur</th>
-					<th>Date</th>	
+					<th>Date</th>
+					<th>Feuille de match</th>	
 					<th>Opérations</th>
 				</tr>
 			</thead>
@@ -23,6 +24,7 @@
 					<td>{{ match.equipeDom.nom }}</td>
 					<td>{{ match.equipeExt.nom }}</td>
 					<td>{{ match.date|date('d/m/Y \\-\\ H:i') }}</td>
+					<td><a href="{{ path('DFMatchBundle_newFeuilleMatch', {match_id : match.id, competition_id : match.calendrier.competition.id }) }}">Créer</a></td>
 					<td><a href="{{ path('DFMatchBundle_updateMatch', {
 						'id_competition' : match.calendrier.competition.id, 
 						'id_match' : match.id }) }}">Modifier</a>

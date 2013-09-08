@@ -1,3 +1,3 @@
-df_admin_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DFAdminBundle:Default:index }
+DFAdminBundle_homePage:
+    pattern: /admin/
+    defaults: { _controller: DFAdminBundle:Private:homePage }
