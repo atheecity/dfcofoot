@@ -41,6 +41,12 @@ class Matchs
     private $equipeExt;
     
     /**
+     * @ORM\OneToOne(targetEntity="DF\ManageMatchBundle\Entity\FeuilleMatch")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $feuilleMatch;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="DF\StadeBundle\Entity\Stade")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -385,5 +391,28 @@ class Matchs
     public function getCalendrier()
     {
         return $this->calendrier;
+    }
+
+    /**
+     * Set feuilleMatch
+     *
+     * @param \DF\ManageMatchBundle\Entity\FeuilleMatch $feuilleMatch
+     * @return Matchs
+     */
+    public function setFeuilleMatch(\DF\ManageMatchBundle\Entity\FeuilleMatch $feuilleMatch = null)
+    {
+        $this->feuilleMatch = $feuilleMatch;
+    
+        return $this;
+    }
+
+    /**
+     * Get feuilleMatch
+     *
+     * @return \DF\ManageMatchBundle\Entity\FeuilleMatch 
+     */
+    public function getFeuilleMatch()
+    {
+        return $this->feuilleMatch;
     }
 }

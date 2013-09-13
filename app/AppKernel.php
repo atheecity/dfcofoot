@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new DF\EquipeBundle\DFEquipeBundle(),
             new DF\MatchBundle\DFMatchBundle(),
             new DF\ReportersBundle\DFReportersBundle(),
+            new DF\ManageMatchBundle\DFManageMatchBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

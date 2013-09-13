@@ -64,10 +64,10 @@ class PublicController extends Controller
 		$rep_matchs = $this->getDoctrine()->getRepository('DFMatchBundle:Matchs');
 		$match = $rep_matchs->getProchainMatch();
 		
-		$dateMin = $match->getDate();
-		$dateMin->sub(new \DateInterval('P3D'));
+		$dateMatch = $match->getDate();
+		$dateMin = $dateMatch->sub(new \DateInterval('P3D'));	
 		
-		if ($dateNow >= $dateMin && $dateNow < $match->getDate()) {
+		if ($dateNow >= $dateMin && $dateNow < $match->getDate()->add(new \DateInterval('P3D'))) {
 			$response = $this->forward('DFMatchBundle:Public:prochainMatch');
 		}
 		else {

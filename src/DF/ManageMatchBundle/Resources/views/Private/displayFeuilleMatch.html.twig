@@ -1,0 +1,38 @@
+{% extends 'DFAdminBundle::layout.html.twig' %}
+
+{% block titleContent %}Feuille de match{% endblock %}
+
+{% block body %}
+
+<!-- CSS -->
+{% stylesheets '@DFManageMatchBundle/Resources/public/css/manageMatch.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+
+<div id="zone-left">
+	<h2>Domicile : {{ match.equipeDom.nom }}</h2>
+	<hr>
+	{% if match.feuilleMatch.compositionDom is not null %}
+	<ul>
+		{% for i in 1..11 %}
+		<li>{{ attribute(match.feuilleMatch.compositionDom, 'joueur'~i).nom }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<a href="{{ path('DFManageMatchBundle_newComposition', { feuille_id : match.feuilleMatch.id, type_equipe : 'home' }) }}">Nouvelle composition</a>
+	{% endif %}
+</div>
+<div id="zone-right">
+	<h2>Extérieur : {{ match.equipeExt.nom }}</h2>
+	<hr>
+	{% if match.feuilleMatch.compositionExt is not null %}
+	<ul>
+		{% for i in 1..11 %}
+		<li>{{ attribute(match.feuilleMatch.compositionExt, 'joueur'~i).nom }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<a href="{{ path('DFManageMatchBundle_newComposition', { feuille_id : match.feuilleMatch.id, type_equipe : 'away' }) }}">Nouvelle composition</a>
+	{% endif %}
+</div>
+{% endblock %}

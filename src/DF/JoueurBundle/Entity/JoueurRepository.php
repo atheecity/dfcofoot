@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class JoueurRepository extends EntityRepository
 {
+	
+	public function getJoueursClub($club)
+	{
+		$qb = $this->createQueryBuilder('j')
+			->join('DF\JoueurBundle\Entity\JoueurClub', 'jc')
+			->where('jc.joueur = j.id')
+			->andWhere('jc.club = :club')
+			->setParameter('club' , $club);
+		
+		return $qb->getQuery()->getResult();
+	}
+	
 }

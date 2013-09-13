@@ -1,0 +1,13 @@
+DFManageMatchBundle_newFeuilleMatch:
+    pattern: /admin/new-feuille-match/{match_id}/
+    defaults: { _controller: DFManageMatchBundle:Private:newFeuilleMatch }
+    options: 
+        expose: true
+
+DFManageMatchBundle_displayFeuilleMatch:
+    pattern: /admin/feuille-match/{feuille_id}/
+    defaults: { _controller: DFManageMatchBundle:Private:displayFeuilleMatch }
+    
+DFManageMatchBundle_newComposition:
+    pattern: /admin/feuille-match/{feuille_id}/new-composition/{type_equipe}/
+    defaults: { _controller: DFManageMatchBundle:Private:newComposition }

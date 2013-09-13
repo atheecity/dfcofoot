@@ -1,3 +1,7 @@
+df_manage_match:
+    resource: "@DFManageMatchBundle/Resources/config/routing.yml"
+    prefix:   /
+
 df_reporters:
     resource: "@DFReportersBundle/Resources/config/routing.yml"
     prefix:   /
