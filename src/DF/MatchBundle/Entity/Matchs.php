@@ -47,6 +47,11 @@ class Matchs
     private $feuilleMatch;
     
     /**
+     * @ORM\OneToOne(targetEntity="DF\ManageMatchBundle\Entity\Groupe")
+     */
+    private $groupeDom;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="DF\StadeBundle\Entity\Stade")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -414,5 +419,28 @@ class Matchs
     public function getFeuilleMatch()
     {
         return $this->feuilleMatch;
+    }
+
+    /**
+     * Set groupeDom
+     *
+     * @param \DF\ManageMatchBundle\Entity\Groupe $groupeDom
+     * @return Matchs
+     */
+    public function setGroupeDom(\DF\ManageMatchBundle\Entity\Groupe $groupeDom = null)
+    {
+        $this->groupeDom = $groupeDom;
+    
+        return $this;
+    }
+
+    /**
+     * Get groupeDom
+     *
+     * @return \DF\ManageMatchBundle\Entity\Groupe 
+     */
+    public function getGroupeDom()
+    {
+        return $this->groupeDom;
     }
 }
