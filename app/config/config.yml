@@ -79,4 +79,4 @@ fos_comment:
             thread: DF\CommentBundle\Entity\Thread
 
 assetic: 
-    bundles: [ "FOSCommentBundle", "DFHomeBundle", "DFMatchBundle", "DFReportersBundle", "DFBreveBundle", "DFUserBundle", "FOSUserBundle" ]
+    bundles: [ "FOSCommentBundle", "DFHomeBundle", "DFMatchBundle", "DFReportersBundle", "DFBreveBundle", "DFUserBundle", "FOSUserBundle", "DFManageMatchBundle" ]
