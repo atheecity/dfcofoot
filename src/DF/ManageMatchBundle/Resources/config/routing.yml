@@ -7,7 +7,13 @@ DFManageMatchBundle_newFeuilleMatch:
 DFManageMatchBundle_displayFeuilleMatch:
     pattern: /admin/feuille-match/{feuille_id}/
     defaults: { _controller: DFManageMatchBundle:Private:displayFeuilleMatch }
+    options: 
+        expose: true
     
 DFManageMatchBundle_newComposition:
     pattern: /admin/feuille-match/{feuille_id}/new-composition/{type_equipe}/
     defaults: { _controller: DFManageMatchBundle:Private:newComposition }
+    
+DFManageMatchBundle_newGroupe:
+    pattern: /admin/match/{match_id}/new-groupe/
+    defaults: { _controller: DFManageMatchBundle:Private:newGroupe }

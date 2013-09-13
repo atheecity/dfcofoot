@@ -34,7 +34,7 @@ class PrivateController extends Controller
         $em->persist($match);
         $em->flush();
         
-        $response = array("code" => 100, "success" => true);
+        $response = array("code" => 100, "success" => true, "feuille_id" => $feuilleMatch->getId());
         return new Response(json_encode($response));
     }
     
@@ -99,5 +99,10 @@ class PrivateController extends Controller
     			'form' => $form->createView(),
     			'title' => 'Composition'
     	));
+    }
+    
+    public function newGroupeAction()
+    {
+    	
     }
 }
