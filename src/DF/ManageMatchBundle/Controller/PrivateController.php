@@ -9,7 +9,9 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use DF\ManageMatchBundle\Entity\FeuilleMatch;
 use DF\ManageMatchBundle\Entity\Composition;
+use DF\ManageMatchBundle\Entity\Groupe;
 use DF\ManageMatchBundle\Form\CompositionType;
+use DF\ManageMatchBundle\Form\GroupeType;
 
 class PrivateController extends Controller
 {
@@ -101,8 +103,19 @@ class PrivateController extends Controller
     	));
     }
     
-    public function newGroupeAction()
+    public function newGroupeAction($match_id)
     {
+    	$em = $this->getDoctrine()->getManager();
     	
+    	$match = $em->getRepository('DFMatchBundle:Matchs')->find($match_id);
+    	
+    	$groupe = new Groupe();
+    	
+    	$form = $this->createForm(new GroupeType(), $groupe);
+    	
+    	return $this->render('DFAdminBundle:Private:form.html.twig', array(
+    			'form' => $form->createView(),
+    			'title' => 'Groupe'
+    	));
     }
 }

@@ -1,4 +1,31 @@
-<div id="fos_comment_thread"></div>
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% javascripts '@FOSCommentBundle/Resources/assets/js/comments.js' %}
+<input type="hidden" id="foscommentbundle_asset_url" value="{{ asset_url }}" />
+{% endjavascripts %}
+
+<div id="fos_comment_thread">
+<div style="text-align:center;color:#cc1c00;font-weight:bold;font-size:14px">
+	<div class="bubblingG">
+		<span id="bubblingG_1">
+		</span>
+		<span id="bubblingG_2">
+		</span>
+		<span id="bubblingG_3">
+		</span>
+	</div>
+	Chargement des commentaires
+</div>
+</div>
 
 {% javascripts '@FOSCommentBundle/Resources/assets/js/comments.js' %}
 <script type="text/javascript">
@@ -16,14 +43,14 @@ var fos_comment_thread_api_base_url = '{{ path('fos_comment_get_threads') }}';
     fos_comment_script.type = 'text/javascript';
 
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(fos_comment_script);
-})();
+})();	
 </script>
 {% endjavascripts %}
 
-{% stylesheets '@DFCommentBundle/Resources/public/css/comment.css' %}
-<link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
-{% endstylesheets %}
-
-{% javascripts '@DFCommentBundle/Resources/public/js/comment.js' %}
-<script type="text/javascript" src="{{ asset_url }}"></script>
+{% javascripts '@DFCommentBundle/Resources/public/js/commentaires.js' %}
+	<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
+
+{% stylesheets '@DFCommentBundle/Resources/public/css/style.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" />
+{% endstylesheets %}

@@ -13,8 +13,9 @@
 		<table class="styl">
 			<thead>
 				<tr>
-					<th>Pos.</th>
-					<th class="left">Equipe</th>
+					<th class="th-position">Pos.</th>
+					<th></th>
+					<th>Club</th>
 					<th>Pts</th>
 					<th>J</th>
 					<th>G</th>
@@ -29,19 +30,27 @@
 			{% set i = 1 %}
 			{% for position in classement %}
 				<tr>
-					<td class="center">{{ i }}</td>
-					<td>
+					<td class="position font1">{{ i }}</td>
+					<td class="logo">
 						<img src="{{ position.club.logo }}" alt=""/>
-						<span class="nom-club">{{ position.club.nom }}</span>
 					</td>
-					<td class="center">{{ position.points }}</td>
-					<td class="center">{{ position.journee }}</td>
-					<td class="center">{{ position.victoire }}</td>
-					<td class="center">{{ position.nul }}</td>
-					<td class="center">{{ position.defaite }}</td>
-					<td class="center">{{ position.butPour }}</td>
-					<td class="center">{{ position.butContre }}</td>
-					<td class="center">{{ position.diff }}</td>
+					<td class="club">
+						<span class="nom-club font1">{{ position.club.nom }}</span>
+					</td>
+					<td class="font1">{{ position.points }}</td>
+					<td class="font2">{{ position.journee }}</td>
+					<td class="font2">{{ position.victoire }}</td>
+					<td class="font2">{{ position.nul }}</td>
+					<td class="font2">{{ position.defaite }}</td>
+					<td class="font2">{{ position.butPour }}</td>
+					<td class="font2">{{ position.butContre }}</td>
+					<td class="font2">
+						{% if position.diff > 0 %}
+							+{{ position.diff }}
+						{% else %}
+							{{ position.diff }}
+						{% endif %}
+					</td>
 				</tr>
 				{% set i = i + 1 %}
 			{% endfor %}

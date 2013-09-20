@@ -253,10 +253,11 @@ header li img {
 
 header li img#last {
 	float: right;
+	margin-top: -70px;
 }
 
 header .tab-content {
-	background-color: #cc052e;
+	background-color: rgb(51, 51, 51);
 	width: 980px;
 	height: auto;
 	float: left;
@@ -297,13 +298,10 @@ header h3.titre {
 #content-body table.styl h1, #content-body table.styl h2, #content-body table.styl h3, #content-body table.styl h4, #content-body table.styl h5{
 	display: inline;
 }
-#content-body table.styl thead th{
-}
+
 #content-body table.styl thead tr th{
-	text-align:center;
 	font-weight: bold;
 	color: #151515;
-	font-size: 1.1em;
 }
 #content-body table.styl thead tr th a{
 	color: #151515;
@@ -313,12 +311,7 @@ header h3.titre {
 	vertical-align: middle;
 	border-bottom: 1px solid #DADADA;
 }
-#content-body table.styl tbody tr:nth-child(2n+1) td{
-	background-color: #F0F0F0;
-}
-#content-body table.styl tbody tr:hover td{
-	background-color: #EAEAEA;
-}
+
 #content-body table.styl tbody tr td.actions{
 	text-align: right;
 	padding-right: 10px;

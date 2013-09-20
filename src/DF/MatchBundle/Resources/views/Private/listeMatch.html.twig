@@ -31,7 +31,7 @@
 					<td>{{ match.equipeDom.nom }}</td>
 					<td>{{ match.equipeExt.nom }}</td>
 					<td>{{ match.date|date('d/m/Y \\-\\ H:i') }}</td>
-					<td><a href=""></a></td>
+					<td>_</td>
 					<td>
 						{% if match.feuilleMatch is not null %}
 						<a href="{{ path('DFManageMatchBundle_displayFeuilleMatch', { feuille_id : match.feuilleMatch.id }) }}">Voir</a>

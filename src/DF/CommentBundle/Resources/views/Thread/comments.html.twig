@@ -9,20 +9,10 @@
 
 #}
 
-{% set depth = depth|default(0) %}
 {% set view = view|default('tree') %}
+{% set depth = depth|default(0) %}
 
 {% if depth == 0 %}
-{% set count = thread.numComments %}
-        	{% if count > 1 %}
-        		<h3>{{ count }} commentaires</h3>
-        	{% else %}
-        		<h3>{{ count }} commentaire</h3>
-        	{% endif %}
-    {% if fos_comment_can_comment_thread(thread) %}
-        {% render url("fos_comment_new_thread_comments", {"id": thread.id}) %}
-    {% endif %}
-
     {% if fos_comment_can_edit_thread(thread) %}
     <div class="fos_comment_thread_commentable">
         <button data-url="{{ url('fos_comment_edit_thread_commentable', {'id': thread.id, 'value': not thread.commentable}) }}" class="fos_comment_thread_commentable_action">
@@ -30,8 +20,25 @@
         </button>
     </div>
     {% endif %}
+    {% set count = thread.numComments %}
+    <h3>
+    	{% transchoice count with {'%count%': count} from "FOSCommentBundle" %}fos_comment_thread_comment_count{% endtranschoice %}
+    	<div class="reload_comment">Recharger commentaires</div>
+    	<input type="hidden" name="fos_comment_thread_id" value="{{ thread.id }}" />
+    	<input type="hidden" name="fos_comment_thread_api_base_url" value="{{ path('fos_comment_get_threads') }}" />
+    </h3>
+    {% if fos_comment_can_comment_thread(thread) %}
+        {% render url("fos_comment_new_thread_comments", {"id": thread.id}) %}
+    {% endif %}
 {% endif %}
 
 {% for commentinfo in comments %}
     {% include "FOSCommentBundle:Thread:comment.html.twig" with { "children": commentinfo.children, "comment": commentinfo.comment, "depth": depth, "view": view } %}
 {% endfor %}
+
+{% if depth == 0 %}
+    <script type="text/javascript">
+    	$(affichageCommentaire(9));
+    	$(modifTextarea);
+    </script>
+{% endif %}
