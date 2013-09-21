@@ -18,6 +18,10 @@ DFManageMatchBundle_newGroupe:
     pattern: /admin/match/{match_id}/new-groupe/
     defaults: { _controller: DFManageMatchBundle:Private:newGroupe }
     
+DFManageMatchBundle_newBut:
+    pattern: /admin/match/{match_id}/club/{club_id}/new-but/
+    defaults: { _controller: DFManageMatchBundle:Private:newBut }
+    
 
 
 DFManageMatchBundle_showMatch:

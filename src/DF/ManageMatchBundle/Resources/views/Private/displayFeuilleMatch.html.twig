@@ -37,4 +37,27 @@
 		{% endif %}
 	</div>
 </div>
+<div class="bloc left">
+	<div class="title">Buts : {{ match.equipeDom.nom }}</div>
+	<a href="{{ path('DFManageMatchBundle_newBut', {
+		'match_id' : match.id, 
+		'club_id' : match.equipeDom.id
+	}) }}">Ajouter but</a>
+	<div class="content dashboard">
+		<ul>
+			{% for but in buts %}
+				{% if but.equipe.id == match.equipeDom.id %}
+					<li>{{ but.joueur.nom }} - {{ but.minute }}"</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+<div class="bloc right">
+	<div class="title">Buts : {{ match.equipeExt.nom }}</div>
+	<a href="{{ path('DFManageMatchBundle_newBut', {
+		'match_id' : match.id, 
+		'club_id' : match.equipeExt.id
+	}) }}">Ajouter but</a>
+</div>
 {% endblock %}
