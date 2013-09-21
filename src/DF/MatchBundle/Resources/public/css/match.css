@@ -49,6 +49,20 @@
 	text-align: center;
 }
 
+#dernier-match #feuille-match {
+	padding-top: 25px;
+	text-align: center;
+}
+
+#dernier-match #feuille-match a {
+	padding: 10px;
+	background-color: #444;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
 #title-ribbons-dernier-match h1 {
 	width: 200px;
 }

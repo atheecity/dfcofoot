@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ClubRepository extends EntityRepository
 {
+	
+	public function getClubByCompetition($competition, $saison)
+	{
+		$qb = $this->createQueryBuilder('c')
+			->join('DF\EquipeBundle\Entity\ClubCompetition', 'cc')
+			->where('cc.competition = :competition')
+			->andWhere('cc.saison = :saison')
+			->setParameter('competition', $competition)
+			->setParameter('saison', $saison);
+		
+		return $qb->getQuery()->getResult();
+	}
+	
 }

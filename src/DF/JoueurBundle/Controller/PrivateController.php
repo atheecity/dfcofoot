@@ -3,6 +3,8 @@
 namespace DF\JoueurBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpFoundation\Request;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\DomCrawler\Crawler;
 use DF\JoueurBundle\Entity\JoueurClub;
@@ -84,6 +86,53 @@ class PrivateController extends Controller
 			$em->persist($joueurClub);
 			$em->flush();
 		}
+	}
+	
+	public function selectNewEffectifAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$id_saison = $this->container->getParameter('saison');
+		$id_competition = 2;
+		
+		$clubs = function (EntityRepository $er) use ($id_competition, $id_saison) {
+    		return $er->createQueryBuilder('c')
+				->join('DF\EquipeBundle\Entity\ClubCompetition', 'cc')
+				->where('cc.competition = :competition')
+				->andWhere('cc.saison = :saison')
+				->setParameter('competition', $id_competition)
+				->setParameter('saison', $id_saison);
+		};
+		
+		$form = $this->createFormBuilder()
+			->add('club', 'entity', array(
+            	'class' => 'DFEquipeBundle:Club', 
+            	'property' => 'nom', 
+            	'multiple' => false, 
+            	'query_builder' => $clubs
+             ))
+			->getForm();
+		
+		$form->handleRequest($request);
+			
+		if ($form->isValid()) {
+			$data = $form->getData();
+			$this->newEffectifAction($data['club']->getId());
+		}
+		else
+			return $this->render('DFAdminBundle:Private:form.html.twig', array(
+				'form' => $form->createView(),
+				'title' => 'Choix club',
+			));
+	}
+	
+	public function showJoueurAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$joueurs = $this->getDoctrine()->getRepository('DFJoueurBundle:Joueur')->findAll();
+		
+		return $this->render('DFJoueurBundle:Private:show-joueur.html.twig', array(
+			'joueurs' => $joueurs
+		));
 	}
 	
 	public function _month($month)
