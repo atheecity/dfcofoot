@@ -17,3 +17,9 @@ DFManageMatchBundle_newComposition:
 DFManageMatchBundle_newGroupe:
     pattern: /admin/match/{match_id}/new-groupe/
     defaults: { _controller: DFManageMatchBundle:Private:newGroupe }
+    
+
+
+DFManageMatchBundle_showMatch:
+    pattern: /show-match/{match_id}/
+    defaults: { _controller: DFManageMatchBundle:Public:showMatch }
