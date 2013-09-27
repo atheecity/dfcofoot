@@ -8,109 +8,66 @@
  with this source code in the file LICENSE.
 
 #}
-{% set nbAbusifY = 5 %}
-{% set nbHsY = 5 %}
+
 {% block fos_comment_comment %}
-{# Permet de savoir si un com doit être masqué #}
-{% set masque = 0 %}
-{% if comment.tag == NULL %}
-    {% if (comment.nbAbusif >= nbAbusifY or comment.nbHs >= nbHsY) %}
-    	{% set masque = 1 %}
-    {% endif %}
-{% endif %}   
-
-<div id="fos_comment_{{ comment.id }}" class="fos_comment_comment_show fos_comment_comment_depth_{{ depth }}" {% if parentId is defined %}data-parent="{{ parentId }}"{% endif %}> 
-    <div class="comment_content 
-    {% if masque == 1 %}
-    	none
-    {% endif %}
-    ">
-    	{% if (comment.nbAbusif < nbAbusifY or comment.nbHs < nbHsY) %}
-    	<div class="fos_comment_left">
-    		{% if (comment.tag != 1 and comment.tag != 2) %}
-    		<img src="" alt="" height="100px" />
-    		{% endif %}
-    		<span class="authorName">
-    				
-    		</span>
-    	</div>
-    	{% endif %}
-    	<div class="fos_comment_top 
-    	{% if (comment.tag == 1 or comment.tag == 2) %}
-    	fos_comment_top_tag 
-    	{% endif %}
-    	">
-    		<div class="top">
-	    		<span>
-	    		{% if comments is defined %}
-	    			#{{ comments|length - loop.index0  }} - 
-	    		{% endif %}
-	    		{% if "now"|date('d/m/y') == comment.createdAt|date('d/m/y') %}
-	    			posté aujourd'hui 
-	    		{% else %}
-	    			posté le {{ comment.createdAt|date('d/m/y') }}
-	    		{% endif %}
-	    		 à {{ comment.createdAt|date('H') }}h{{ comment.createdAt|date('i') }}
-	    		</span>
-
-	    	</div>
-    <div id="fos_comment_comment_body_{{ comment.id }}" class="fos_comment_comment_body
-    {% if (comment.tag == 1 or comment.tag == 2) %}
-    fos_comment_top_tag
-    {% endif %}
-    ">
-    	{% if comment.tag == NULL %}
-			{% block fos_comment_comment_body %}
-	            {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
-	                {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
-	            {% else %}
-	                {% if comment is fos_comment_raw %}
-	                    {{ comment.rawBody | raw }}
-	                {% else %}
-	                    {{ comment.body | trim | nl2br }}
-	                {% endif %}
-	            {% endif %}
-	            {% block fos_comment_comment_metas_edit %}
-                {% if fos_comment_can_edit_comment(comment) %}
-                <button data-container="#fos_comment_comment_body_{{ comment.id }}" data-url="{{ url("fos_comment_edit_thread_comment", {"id": comment.thread.id, "commentId": comment.id}) }}" class="fos_comment_comment_edit_show_form">{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit{% endtrans %}</button>
-                {% endif %}
-            	{% endblock fos_comment_comment_metas_edit %}
-		    {% endblock fos_comment_comment_body %}
-        {% elseif comment.tag == 1 %}
-        	Message supprimé pour hors-sujet
-        {% elseif comment.tag == 2 %}
-        	Message supprimé pour abus - {{ comment.textAbusif }}
-        {% endif %}
+<div id="fos_comment_{{ comment.id }}" class="fos_comment_comment_show fos_comment_comment_depth_{{ depth }}" {% if parent is defined %}data-parent="{{ parent.id }}"{% endif %}>
+    <div class="fos_comment_comment_metas">
+        <a href="">
+        	<img src="{{ asset('bundles/dfcomment/images/001.png') }}" alt="" />
+        </a>
     </div>
-
+    <header>
+    	{% block fos_comment_comment_metas %}
+            {% block fos_comment_comment_metas_authorline %}
+                <span class="fos_comment_comment_authorname">
+                        {{ comment.authorName }}
+                </span>
+                <span class="bulle">•</span>
+                <span class="fos_comment_comment_createdAt">
+               		le {{ comment.createdAt|date('d/m/Y à H:i') }}
+	            </span>
+            {% endblock fos_comment_comment_metas_authorline %}
+        {% endblock fos_comment_comment_metas %}
+    </header>	
+    <div id="fos_comment_comment_body_{{ comment.id }}" class="fos_comment_comment_body">
+        {% block fos_comment_comment_body %}
+            {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
+                {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
+            {% else %}
+                {% if comment is fos_comment_raw %}
+                    {{ comment.rawBody | raw }}
+                {% else %}
+                    {{ comment.body | nl2br }}
+                {% endif %}
+            {% endif %}
+        {% endblock fos_comment_comment_body %}
+        <footer>
+            {% block fos_comment_comment_metas_edit %}
+                {% if fos_comment_can_edit_comment(comment) %}
+                	<p data-container="#fos_comment_comment_body_{{ comment.id }}" data-url="{{ url("fos_comment_edit_thread_comment", {"id": comment.thread.id, "commentId": comment.id}) }}" class="fos_comment_comment_edit_show_form bt_com">Modifier</p>
+                {% endif %}
+            {% endblock fos_comment_comment_metas_edit %}
+            {% if fos_comment_can_comment(comment) %}
+            	{% block fos_comment_comment_reply %}
+                	<p data-url="{{ url('fos_comment_new_thread_comments', {"id": comment.thread.id}) }}" data-name="{{ comment.authorName }}" data-parent-id="{{ comment.id }}" class="fos_comment_comment_reply_show_form bt_com">{% trans from 'FOSCommentBundle' %}fos_comment_comment_show_reply{% endtrans %}</p>
+                {% endblock fos_comment_comment_reply %}
+            {% endif %}
+        </footer>
+    </div>
     {% block fos_comment_comment_children %}
         {% if view is not sameas('flat') %}
-            {% if fos_comment_can_comment(comment) and comment.tag == NULL and depth < 2 %}
-                <div class="fos_comment_comment_reply">
-                    {% block fos_comment_comment_reply %}
-                        <button data-url="{{ url('fos_comment_new_thread_comments', {"id": comment.thread.id}) }}" data-name="{{ comment.authorName }}" data-parent-id="{{ comment.id }}" class="fos_comment_comment_reply_show_form">{% trans from 'FOSCommentBundle' %}fos_comment_comment_show_reply{% endtrans %}</button>
-                    {% endblock fos_comment_comment_reply %}
-                </div>
-            {% endif %}
-     </div>
-    </div>
-    {% if masque == 1 %}
-    <div class="comment_content msq">
-    	Commentaire masqué automatiquement - Cliquez ici pour afficher le commentaire
-    </div>
-    {% endif %}
-
+            
 
             <div class="fos_comment_comment_replies">
+
                 {% if children is defined %}
-                    {% include "FOSCommentBundle:Thread:comments.html.twig" with { "comments": children, "depth": depth + 1, "parentId": comment.id, "view": view } %}
+                    {% include "FOSCommentBundle:Thread:comments.html.twig" with { "comments": children, "depth": depth + 1, "parent": comment, "view": view } %}
                 {% endif %}
 
             </div>
         {% elseif view is sameas('flat') and children is defined %}
-            {% include "FOSCommentBundle:Thread:comments.html.twig" with { "comments": children, "depth": depth + 1, "parentId": comment.id, "view": view } %}
+            {% include "FOSCommentBundle:Thread:comments.html.twig" with { "comments": children, "depth": depth + 1, "parent": comment, "view": view } %}
         {% endif %}
     {% endblock fos_comment_comment_children %}
-
 </div>
 {% endblock fos_comment_comment %}

@@ -362,7 +362,7 @@ input {
 	margin:0 0 20px; 
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"], button {
 	padding: 9px 28px;
 	font-size: 13px;
 	line-height: 15px;
@@ -372,12 +372,12 @@ input[type="submit"], input[type="button"] {
 	color: rgb(155, 155, 155);
 }
 
-input[type="submit"]:hover, input[type="button"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover, button:hover {
 	 background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	 color: #444;
 }
 
-input[type="submit"]:active, input[type="submit"]:active {
+input[type="submit"]:active, input[type="submit"]:active, button:active {
 	position: relative;
 	top: 1px;
 }

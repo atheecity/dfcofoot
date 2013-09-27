@@ -15,12 +15,14 @@
         {% block fos_comment_form_fields %}
             {{ form_errors(form) }}
             {{ form_errors(form.body) }}
-            {{ form_widget(form.body) }}
+            <div class="form_textarea">
+            	{{ form_widget(form.body) }}
+            </div>
             {{ form_widget(form._token) }}
         {% endblock %}
 
         <div class="fos_comment_submit">
-            <button type="button" class="fos_comment_comment_edit_cancel">{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_cancel{% endtrans %}</button>
+            <input type="button" class="fos_comment_comment_edit_cancel" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_cancel{% endtrans %}" />
             {% block fos_comment_form_submit %}
                 <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_submit{% endtrans %}" />
             {% endblock %}
@@ -30,3 +32,6 @@
 
     </form>
 </div>
+<script type="text/javascript">
+	$(modifTextarea);
+</script>
